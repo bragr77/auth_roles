@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Rol;
 
 class RegisterController extends Controller
 {
@@ -41,6 +42,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $roles = Rol::all();
+
+        return view('auth.register')->with('roles', $roles);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -68,6 +76,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'rol_id' => $data['rol_id'],
         ]);
     }
 }

@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="rol_id" class="col-md-4 col-form-label text-md-right">Rol</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select" name="rol_id" id="rol_id" required>
+                                    <option selected disabled value="0">Selecciona un Rol...</option>
+
+                                    @foreach ($roles as $rol)
+                                        <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
